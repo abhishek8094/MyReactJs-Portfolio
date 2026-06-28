@@ -2,17 +2,29 @@
 
 
 import React from "react";
+import { useTheme } from "../context/ThemeContext";
 
 const Skills = () => {
+  const { isDark } = useTheme();
+
   return (
     <div
       id="skills"
       className="flex flex-col items-center justify-center min-h-screen overflow-hidden "
+      style={{
+        backgroundColor: isDark ? "#000" : "#f5f5f5",
+        transition: "background-color 0.3s ease",
+      }}
     >
       <h1 className="p-10 text-transparent bg-clip-text bg-gradient-to-r from-pink-500 to-purple-500 text-6xl font-bold  text-center">
         Skills
       </h1>
-      <div className="skills pt-8 ">
+      <div className="skills pt-8 "
+        style={{
+          backgroundColor: isDark ? "#000" : "#f5f5f5",
+          transition: "background-color 0.3s ease",
+        }}
+      >
         <link rel="stylesheet" href="/styles.css" />
         <div className="scroll" style={{ "--time": "20s" }}>
           <div>

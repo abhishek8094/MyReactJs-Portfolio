@@ -3,8 +3,11 @@ import AOS from "aos";
 import "aos/dist/aos.css"; // Import AOS styles
 import project from "../assets/constant";
 import ProjectCard from "../components/ProjectCard";
+import { useTheme } from "../context/ThemeContext";
 
 const Projects = () => {
+  const { isDark } = useTheme();
+
   useEffect(() => {
     AOS.init(); // Initialize AOS
   }, []);
@@ -13,6 +16,10 @@ const Projects = () => {
     <div
       id="projects"
       className="flex flex-col items-center justify-center min-h-screen pt-16"
+      style={{
+        backgroundColor: isDark ? "#000" : "#f5f5f5",
+        transition: "background-color 0.3s ease",
+      }}
     >
       <h1 className="p-3 text-transparent bg-clip-text bg-gradient-to-r from-pink-500 to-purple-500 text-6xl font-bold mb-8 text-center">
         Projects

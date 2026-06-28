@@ -2,14 +2,24 @@ import React, { useEffect } from "react";
 import hello from "../../hello.json";
 import Lottie from "lottie-react";
 import AOS from "aos";
+import { useTheme } from "../context/ThemeContext";
 
 const About = () => {
+  const { isDark } = useTheme();
+
   useEffect(() => {
     AOS.init({ once: true });
   }, []);
 
   return (
-    <section id="about" className="pt-8">
+    <section 
+      id="about" 
+      className="pt-8"
+      style={{
+        backgroundColor: isDark ? "#000" : "#f5f5f5",
+        transition: "background-color 0.3s ease",
+      }}
+    >
       <div
         data-aos="fade" // Apply AOS fade-in animation
         data-aos-delay="400" // Optional delay
@@ -26,7 +36,12 @@ const About = () => {
             <Lottie animationData={hello} />
           </div>
           <div className="md:w-2/3 md:pl-8">
-            <p className="text-md sm:text-lg mx-5  text-slate-300">
+            <p 
+              className="text-md sm:text-lg mx-5"
+              style={{
+                color: isDark ? "#cbd5e1" : "#475569",
+              }}
+            >
               <span className="first-letter text-6xl text-blue-500">I </span>
               am a passionate and dedicated Computer Science enthusiast at Dr.
               Ram Manohar Lohia Avadh University, Ayodhya. My journey involves
@@ -34,7 +49,12 @@ const About = () => {
               seamless experiences for users.
             </p>
             <br />
-            <p className="mx-5 text-md sm:text-lg text-slate-300">
+            <p 
+              className="mx-5 text-md sm:text-lg"
+              style={{
+                color: isDark ? "#cbd5e1" : "#475569",
+              }}
+            >
               I'm constantly seeking opportunities to expand my knowledge and
               skills in the fields of Frontend Developer or ReactJs Developer, I
               am a fitness enthusiast and an avid learner, constantly striving
@@ -47,8 +67,12 @@ const About = () => {
           data-aos="fade-up" // Apply AOS fade-in animation
           data-aos-delay="400" // Optional delay
           data-aos-duration="1200"
-          style={{ backgroundColor: "#2caed8" }}
-          className="flex flex-col items-center justify-center w-full max-w-6xl text-black rounded-lg mx-2 md:mx-4 lg:mx-10 mt-8"
+          style={{
+            backgroundColor: isDark ? "#1e293b" : "#2caed8",
+            color: isDark ? "#fff" : "#000",
+            transition: "background-color 0.3s ease, color 0.3s ease",
+          }}
+          className="flex flex-col items-center justify-center w-full max-w-6xl rounded-lg mx-2 md:mx-4 lg:mx-10 mt-8"
         >
           <h1 className="text-2xl mb-4 font-bold">Core Fundamentals</h1>
           <div className="flex flex-wrap justify-center w-3/4">

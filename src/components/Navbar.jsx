@@ -10,7 +10,9 @@ import CloseIcon from "@mui/icons-material/Close";
 import Container from "@mui/material/Container";
 import Button from "@mui/material/Button";
 import MenuItem from "@mui/material/MenuItem";
+import { FiSun, FiMoon } from "react-icons/fi";
 import Navigationlogo from "../../public/Navlogo.png"
+import { useTheme } from "../context/ThemeContext";
 
 const pages = [
   { name: "Home", href: "#" },
@@ -23,6 +25,7 @@ const pages = [
 function Navbar() {
   const [anchorElNav, setAnchorElNav] = React.useState(null);
   const [activePage, setActivePage] = React.useState(pages[0].name); // Default to "Home"
+  const { isDark, toggleTheme } = useTheme();
 
   const handleOpenNavMenu = (event) => {
     setAnchorElNav(event.currentTarget);
@@ -42,9 +45,12 @@ function Navbar() {
       className="sm:px-32"
       position="fixed"
       sx={{
-        backgroundColor: "black",
-        opacity: 0.8,
+        backgroundColor: isDark ? "#000" : "#ffffff",
+        color: isDark ? "white" : "#000",
+        opacity: isDark ? 0.8 : 0.95,
         zIndex: 2,
+        boxShadow: isDark ? "0 2px 8px rgba(255,255,255,0.1)" : "0 2px 8px rgba(0,0,0,0.1)",
+        transition: "background-color 0.3s ease, color 0.3s ease",
       }}
     >
       <Container
@@ -73,7 +79,7 @@ function Navbar() {
               fontFamily: "monospace",
               fontWeight: 700,
               letterSpacing: ".3rem",
-              color: "white",
+              color: isDark ? "white" : "#000",
               textDecoration: "none",
             }}
           >
@@ -84,6 +90,7 @@ function Navbar() {
               flexGrow: 1,
               display: { xs: "none", md: "flex" },
               justifyContent: "flex-end",
+              alignItems: "center",
             }}
           >
             {pages.map((page) => (
@@ -92,7 +99,7 @@ function Navbar() {
                 href={page.href}
                 sx={{
                   mx: 1,
-                  color: "white",
+                  color: isDark ? "white" : "#000",
                   textDecoration:
                     activePage === page.name ? "underline" : "none",
                   textUnderlineOffset:
@@ -109,17 +116,48 @@ function Navbar() {
                 {page.name}
               </Button>
             ))}
+            <IconButton
+              onClick={toggleTheme}
+              sx={{
+                ml: 2,
+                color: isDark ? "white" : "#000",
+                fontSize: "1.5rem",
+                transition: "transform 0.3s ease",
+                "&:hover": {
+                  transform: "rotate(20deg)",
+                },
+              }}
+              title={isDark ? "Switch to light mode" : "Switch to dark mode"}
+            >
+              {isDark ? <FiSun size={24} /> : <FiMoon size={24} />}
+            </IconButton>
           </Box>
           <Box
             sx={{
               display: { xs: "flex", md: "none" },
               flexGrow: 1,
               justifyContent: "flex-end",
+              alignItems: "center",
+              gap: 1,
             }}
           >
             <IconButton
+              onClick={toggleTheme}
+              sx={{
+                color: isDark ? "white" : "#000",
+                fontSize: "1.5rem",
+                transition: "transform 0.3s ease",
+                "&:hover": {
+                  transform: "rotate(20deg)",
+                },
+              }}
+              title={isDark ? "Switch to light mode" : "Switch to dark mode"}
+            >
+              {isDark ? <FiSun size={24} /> : <FiMoon size={24} />}
+            </IconButton>
+            <IconButton
               size="large"
-              sx={{ color: "white" }}
+              sx={{ color: isDark ? "white" : "#000" }}
               aria-label="menu"
               aria-controls="menu-appbar"
               aria-haspopup="true"
@@ -149,6 +187,13 @@ function Navbar() {
                 <MenuItem
                   key={page.name}
                   onClick={() => handlePageChange(page.name)}
+                  sx={{
+                    backgroundColor: isDark ? "#1a1a1a" : "#f5f5f5",
+                    color: isDark ? "white" : "#000",
+                    "&:hover": {
+                      backgroundColor: isDark ? "#2a2a2a" : "#e0e0e0",
+                    },
+                  }}
                 >
                   <Typography
                     textAlign="center"

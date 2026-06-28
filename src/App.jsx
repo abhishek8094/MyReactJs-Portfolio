@@ -8,6 +8,9 @@ import Education from "./sections/Education";
 import Contact from "./sections/Contact";
 import About from "./sections/About";
 import Loader from "./components/Loader";
+import Navbar from "./components/Navbar";
+import { ThemeProvider } from "./context/ThemeContext";
+
 function App() {
   const [loading, setLoading] = useState(true);
 
@@ -25,7 +28,8 @@ function App() {
     
   }
   return (
-    <>
+    <ThemeProvider>
+      <Navbar />
       <Home />
       <About />
       <Skills />
@@ -33,7 +37,7 @@ function App() {
       <Education />
       <Contact />
       <Footer />
-    </>
+    </ThemeProvider>
   );
 }
 

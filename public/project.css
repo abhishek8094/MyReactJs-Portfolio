@@ -6,35 +6,26 @@
   box-sizing: border-box;
 }
 
-
-
-
-
-
-
 .project-card-sm {
-/*   max-width: 600px; */
-  width:650px;
+  width: 650px;
   position: relative;
   min-height: 230px;
   padding: 2.5px;
   border-radius: 15px;
   background-color: rgba(255, 255, 255, 0.15);
   overflow: hidden;
-  /* cursor: pointer; */
- 
+  
   display: flex;
   justify-content: center;
   align-items: center;
   
-  transition: transform 0.4s, box-shadow 0.4s ;
+  transition: transform 0.4s, box-shadow 0.4s, background-color 0.3s ease;
 }
 
 .project-card-sm:hover {
   transform: scale(1.025);
   box-shadow: 0 0 100px -30px #6f45dc;  
 }
-
 
 .project-card-sm .card-border-gradient {
   content: "";
@@ -45,7 +36,7 @@
   z-index: -1;
   background: linear-gradient(to right, transparent, #9272e4, transparent);
   
-  transition: opacity 0.3s ;
+  transition: opacity 0.3s;
   opacity: 0;
     
   animation: animate-border-gradient 5s infinite linear;
@@ -61,27 +52,37 @@
     transform-origin: bottom;
   }
   100% {
-    transform: rotate(360deg) ;
+    transform: rotate(360deg);
     transform-origin: bottom;
   }
 }
 
-
 .project-card-sm .card-container {
   display: flex;
- min-height: 225px;
- align-items: start;
- justify-content: center;
+  min-height: 225px;
+  align-items: start;
+  justify-content: center;
   gap: 1rem;
   padding: 0.75rem;
   border-radius: 12px;
   background-color: hsl(0, 0%, 10%);
   color: rgba(255, 255, 255, 0.7);
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* Light mode card container */
+html .card-container {
+  background-color: #ffffff;
+  color: rgba(0, 0, 0, 0.7);
+}
+
+/* Dark mode card container */
+html.dark .card-container {
+  background-color: hsl(0, 0%, 10%);
+  color: rgba(255, 255, 255, 0.7);
 }
 
 .card-container img {
-  
-  /* height: 100%; */
   width: 100%;
   border-radius: 8px;
   object-fit: contain;
@@ -89,7 +90,6 @@
 }
 
 .card-container .wrapper {
- 
   font-size: 0.9rem;
   line-height: 1.4;
 }
@@ -100,26 +100,45 @@
   line-height: 1;
   color: #fff;
   margin-bottom: 0.75rem;
+  transition: color 0.3s ease;
+}
+
+/* Light mode heading */
+html .wrapper h1 {
+  color: #000;
+}
+
+/* Dark mode heading */
+html.dark .wrapper h1 {
+  color: #fff;
 }
 
 .card-container .wrapper button {
   background: none;
   border: none;
-  
   font: inherit;
   color: #fff;
-/*   background-color: red; */
   margin-top: 1.4rem;
-  
+  transition: color 0.3s ease;
+}
+
+/* Light mode button */
+html .wrapper button {
+  color: #000;
+}
+
+/* Dark mode button */
+html.dark .wrapper button {
+  color: #fff;
 }
 
 .card-container .wrapper button i {
   margin-left: .5rem;
   transition: margin 0.3s;
 }
-.card-container:hover button i {margin-left: 1rem;}
-
-
+.card-container:hover button i {
+  margin-left: 1rem;
+}
 
 @media screen and (max-width: 767px) {
   .project-card-sm {
