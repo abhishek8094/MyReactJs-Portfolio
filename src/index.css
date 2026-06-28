@@ -1,17 +1,67 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-body{
-       
-   
-  background-color: black;
-  color: white;
+
+/* Light mode - default */
+body {
+  background-color: #f5f5f5;
+  color: #000;
   overflow: hidden;
-   
+  transition: background-color 0.3s ease, color 0.3s ease;
 }
+
+/* Dark mode */
+html.dark body {
+  background-color: #000;
+  color: #fff;
+}
+
+html.dark {
+  color-scheme: dark;
+}
+
 html {
   scroll-behavior: smooth;
   -webkit-user-select: none; /* Safari */
   -ms-user-select: none; /* IE 10 and IE 11 */
   user-select: none; /* Standard syntax */
+}
+
+/* Dark mode overrides for common elements */
+html.dark {
+  background-color: #000;
+}
+
+html.dark h1,
+html.dark h2,
+html.dark h3,
+html.dark h4,
+html.dark h5,
+html.dark h6,
+html.dark p,
+html.dark span,
+html.dark div {
+  color: inherit;
+}
+
+html.dark a {
+  color: #4da6ff;
+}
+
+html.dark a:hover {
+  color: #80c4ff;
+}
+
+html.dark button,
+html.dark .MuiButton-root {
+  color: inherit;
+}
+
+html.dark .MuiAppBar-root {
+  background-color: #1a1a1a;
+}
+
+/* Smooth transition for theme switching */
+* {
+  transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
 }

@@ -4,14 +4,23 @@
     font-family: "Poppins", sans-serif;
     box-sizing: border-box;
 
-
-
     display: flex;
     justify-content: center;
     align-items: center;
     min-height: 50vh;
-    background: #000;
+    background: var(--bg-color, #000);
     flex-direction: column;
+    transition: background 0.3s ease;
+}
+
+/* Light mode styles */
+html .skills {
+    background: #f5f5f5;
+}
+
+/* Dark mode styles */
+html.dark .skills {
+    background: #000;
 }
 
 .scroll {
@@ -65,9 +74,22 @@
     transition: 0.5s;
 }
 
+/* Light mode for skill tags */
+html .scroll div span {
+    background: #e0e0e0;
+    color: #000;
+}
+
+/* Dark mode for skill tags */
+html.dark .scroll div span {
+    background: #333;
+    color: #fff;
+}
+
 .scroll div span:hover {
     background: #3fd2f9;
     cursor: pointer;
+    color: #000;
 }
 
 .imgBox div {
